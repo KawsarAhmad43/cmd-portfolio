@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmad | Smart Portfolio</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    /* Custom styles */
+    .cli-container {
+      background-color: #000;
+      color: #00ff00;
+      font-family: monospace;
+      padding: 20px;
+      height: 100vh;
+    }
+    .cli-output {
+      border-right: 1px solid #00ff00;
+      padding-right: 10px;
+    }
+    .cli-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .digital-clock {
+      color: #00ff00; /* Green color */
+      font-family: 'Digital-7', monospace;
+      font-size: 1.5rem;
+    }
+  </style>
+  <!-- Add Casio watch font -->
+  <link href="https://fonts.googleapis.com/css2?family=Digital-7&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Ahmad</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Real-time BD time watch -->
+      <div class="digital-clock text-white ml-3"></div>
+      <!-- End of Real-time BD time watch -->
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="cli-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 cli-output">
+          <pre id="command-output"></pre>
+        </div>
+        <div class="col-md-6 cli-image">
+          <img style="width: 300px; border-radius: 20%;" src="https://www.cornwallbusinessawards.co.uk/wp-content/uploads/2017/11/dummy450x450.jpg" alt="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>About Me</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at felis et justo pharetra laoreet.</p>
+        </div>
+        <div class="col-md-6">
+          <!-- Add an image or content about yourself here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-5">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <!-- Add project card content here -->
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <!-- Add project card content here -->
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <!-- Add project card content here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS and jQuery (required for Bootstrap) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JavaScript for typing effect and real-time BD time watch -->
+  <script>
+    const commandOutput = document.getElementById("command-output");
+    const commands = [
+      "", "Hey I'm Kawsar Ahmad", "", "$ I'm Software Engineer --Research Assistant",
+      "$ I aspire to be a great software engineer", "$ looking for my cv? wait generating.........",
+      "", "$ cv.txt", '<a href="https://your-cv-link-here.com" target="_blank" rel="noopener noreferrer">Click here to download my CV.</a>',
+      "Click here to contact me."
+    ];
+
+    function typeCommand() {
+      let commandIndex = 0;
+      const interval = setInterval(() => {
+        if (commandIndex < commands.length) {
+          commandOutput.innerHTML += commands[commandIndex] + "\n";
+          commandIndex++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 1000);
+    }
+
+    function updateBDTime() {
+      const bdTimeElement = document.querySelector(".digital-clock");
+      const options = { timeZone: "Asia/Dhaka", hour: "numeric", minute: "numeric", second: "numeric" };
+      const bdTime = new Date().toLocaleTimeString("en-US", options);
+      bdTimeElement.textContent = bdTime;
+    }
+
+    typeCommand();
+    setInterval(updateBDTime, 1000);
+  </script>
+</body>
+</html>
